@@ -14,7 +14,10 @@ import org.dreambot.api.wrappers.widgets.message.Message;
 
 import com.flax.api.Flax;
 import com.flax.api.enums.Bars;
+import com.flax.api.enums.Fish;
 import com.flax.api.enums.Ores;
+import com.flax.api.event.FailedSmeltingEvent;
+import com.flax.api.event.FishCaughtEvent;
 import com.flax.api.event.GameEvent;
 import com.flax.api.event.LevelEvent;
 import com.flax.api.event.MinedEvent;
@@ -71,6 +74,7 @@ public class GameEventManager {
     }
     
     public void onMessage(Message message) {
+    	
     	// Level Up
         if(message.getMessage().startsWith("Congratulations, you just advanced")) {
             final Skill skill = Skill.valueOf(message.getMessage().split(" level.")[0].split(" ")[5].toUpperCase());
@@ -86,39 +90,47 @@ public class GameEventManager {
             return;
         }
         
-        // Smelted Bar
+     // Smelted Bar
         if(message.getMessage().startsWith("You retrieve a bar of")) {
-        	String smelting_message = message.getMessage();
         	
-        	Bars bar = null;
-        	if(smelting_message.contains("bronze")) {
-        		bar = Bars.BRONZE;
-        	} else if(smelting_message.contains("iron")) {
-        		bar = Bars.IRON;
+        	for(Bars bar : Bars.values()) {
+        		if(message.getMessage().contains(bar.getName().toLowerCase())) {
+                	fireGameEvent(new SmeltedEvent(bar));
+                	return;
+        		}
         	}
         	
+        	return;
+        }
 
-        	fireGameEvent(new SmeltedEvent(bar));
+        // When Smelting Iron, you have 50% Chance of it being to impure...
+        if(message.getMessage().contains("too impure and you fail to refine it.")) {
+        	fireGameEvent(new FailedSmeltingEvent());
+        }
+        
+        // Mined Ore
+        if(message.getMessage().contains("You manage to mine some ")) {
+       	     	
+        	for(Ores ore : Ores.values()) {
+        		if(message.getMessage().contains(ore.getName().toLowerCase())) {
+        			fireGameEvent(new MinedEvent(ore));
+                	return;		
+        		}
+        	}
         	
         	return;
         }
         
-        // Mined Ore
-        if(message.getMessage().startsWith("You manage to mine some ")) {
-        	String mining_message = message.getMessage();
-        	
-        	mining_message = mining_message.substring(mining_message.indexOf("some ")+5);
-        	mining_message = mining_message.substring(0, mining_message.length()-1);
-        	
-        	Ores ore = null;
-        	
-        	if(mining_message.contains("copper")) {
-        		ore = Ores.COPPER;
-        	} else if(mining_message.contains("tin")) {
-        		ore = Ores.TIN;
+        // Fish Catch Event
+        if(message.getMessage().contains("You catch a ")) {
+   
+        	for(Fish fish : Fish.values()) {
+        		if(message.getMessage().contains(fish.getName().toLowerCase())) {
+        			fireGameEvent(new FishCaughtEvent(fish));
+        			return;
+        		}
         	}
         	
-        	fireGameEvent(new MinedEvent(ore));
         	return;
         }
     }

@@ -8,9 +8,11 @@ import org.dreambot.api.input.Mouse;
 import org.dreambot.api.methods.container.impl.Inventory;
 import org.dreambot.api.methods.container.impl.bank.Bank;
 import org.dreambot.api.methods.container.impl.equipment.Equipment;
+import org.dreambot.api.methods.grandexchange.GrandExchange;
 import org.dreambot.api.methods.input.Camera;
 import org.dreambot.api.methods.input.Keyboard;
 import org.dreambot.api.methods.interactive.GameObjects;
+import org.dreambot.api.methods.interactive.Players;
 import org.dreambot.api.methods.skills.Skills;
 import org.dreambot.api.methods.tabs.Tabs;
 import org.dreambot.api.methods.walking.impl.Walking;
@@ -25,7 +27,7 @@ import org.dreambot.api.wrappers.interactive.Player;
  */
 public class ClientContext {
 
-	private static AbstractScript script_context = null;
+private static AbstractScript script_context = null;
 	
 	public static ClientContext createContext(AbstractScript script) {
 		return new ClientContext(script);
@@ -41,6 +43,14 @@ public class ClientContext {
 	
 	public Inventory getInventory() {
 		return script_context.getInventory();
+	}
+	
+	public GrandExchange getGrandExchange() {
+		return script_context.getGrandExchange();
+	}
+	
+	public Players getPlayers() {
+		return script_context.getPlayers();
 	}
 	
 	public Bank getBank() {

@@ -7,16 +7,19 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 
 import org.dreambot.api.script.AbstractScript;
+import org.dreambot.api.script.listener.MessageListener;
+import org.dreambot.api.script.listener.PaintListener;
 import org.dreambot.api.wrappers.widgets.message.Message;
 
 import com.flax.api.Flax;
 import com.flax.api.context.ClientContext;
+import com.flax.api.event.listeners.GameEventListener;
 
 
 /**
  * @author Ian
  */
-public abstract class AbstractFlaxScript extends AbstractScript {
+public abstract class AbstractFlaxScript extends AbstractScript implements MessageListener, PaintListener {
 
 	public abstract void start();
 	public abstract void exit();
@@ -67,10 +70,32 @@ public abstract class AbstractFlaxScript extends AbstractScript {
 	}
 
 	@Override
-	public void onMessage(Message message) {
+	public void onGameMessage(Message message) {
 		Flax.getGameEventManager().onMessage(message);
 		
 		message(message);
+	}
+	
+	@Override
+	public void onPlayerMessage(Message arg0) {
+		
+		
+	}
+
+	@Override
+	public void onPrivateInMessage(Message arg0) {
+		
+		
+	}
+
+	@Override
+	public void onPrivateOutMessage(Message arg0) {
+		
+	}
+
+	@Override
+	public void onTradeMessage(Message arg0) {
+				
 	}
 	
 	@Override

@@ -13,6 +13,8 @@ public class GameEvent {
 	public static final int EVENT_SMELTED_BAR = 2;
 	public static final int EVENT_MINED_ORE = 3;
 	public static final int EVENT_DEATH = 4;
+	public static final int EVENT_FAILED_REFINING = 5;
+	public static final int EVENT_FISH_CAUGHT = 6;
 		
 	private int event_type = EVENT_NULL;
 	
