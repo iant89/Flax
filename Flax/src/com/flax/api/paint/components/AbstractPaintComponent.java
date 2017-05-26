@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flax.api.paint;
+package com.flax.api.paint.components;
 
 import java.awt.Graphics;
 
