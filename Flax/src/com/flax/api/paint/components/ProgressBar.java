@@ -5,8 +5,12 @@ package com.flax.api.paint.components;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JProgressBar;
 
@@ -19,14 +23,15 @@ import com.flax.api.utils.MathUtils;
 public class ProgressBar extends AbstractPaintComponent {
 
 	// Default Colors
-	private final Color 	COLOR_GREEN 					= new Color(0, 95, 0);
-	private final Color		COLOR_ORANGE					= new Color(216, 128, 0);
+	public final Color 		COLOR_GREEN 					= new Color(0, 95, 0);
+	public final Color		COLOR_ORANGE					= new Color(216, 128, 0);
 	
 	// Progress Bar Variables
 	private int 			progress_maximum 				= 0;
 	private int	 			progress_minimum 				= 0;
 	private int 			progress_value 					= 0;
 	private boolean 		progress_string_painted 		= false;
+	private String			progress_string 				= "";
 	private Color			progress_color					= this.COLOR_GREEN;
 	private Color			progress_string_color			= new Color(255, 255, 255);
 	
@@ -44,6 +49,14 @@ public class ProgressBar extends AbstractPaintComponent {
 	 */
 	public void setProgressStringColor(Color color) {
 		progress_string_color = color;
+	}
+	
+	/**
+	 * Sets custom text to draw on the Progress Bar
+	 * @param progress_text
+	 */
+	public void setProgressString(String progress_text) {
+		progress_string = progress_text;
 	}
 	
 	/**
@@ -132,6 +145,14 @@ public class ProgressBar extends AbstractPaintComponent {
 		return progress_string_color;
 	}
 	
+	/**
+	 * Gets the Custom text
+	 * @return String
+	 */
+	public String getProgressString() {
+		return progress_string;
+	}
+	
 	@Override
 	public void paint(Graphics g1) {
 		
@@ -152,7 +173,8 @@ public class ProgressBar extends AbstractPaintComponent {
 		 * Draw the Progress
 		 */
 		// Scale the Progress Value to the Width of the Progress bar
-		int progress_draw_width = MathUtils.scaleInt(progress_value, progress_minimum, progress_maximum, 0, getWidth());
+		int progress_draw_width = (int) MathUtils.scaleIntToFloat(progress_value, this.getMinimum(), this.getMaximum(), 0, getWidth()+1);//MathUtils.scaleInt(progress_value, progress_minimum, progress_maximum, 0, getWidth());
+		
 		g2.setColor(getProgressColor());
 		g2.fillRect(getX(), getY(), progress_draw_width, getHeight());
 		
@@ -160,22 +182,34 @@ public class ProgressBar extends AbstractPaintComponent {
 		 * Draw the Progress String 
 		 */
 		if(progress_string_painted) {
-			String percent_string = "" + MathUtils.caculatePercent(progress_value, progress_maximum) + "%";
-			int font_width = g2.getFontMetrics(g2.getFont()).stringWidth(percent_string);
-			int font_height = g2.getFontMetrics(g2.getFont()).getHeight();
+			String percent_s = "";
 			
-			int font_x = (getWidth() / 2) - (font_width / 2);
-			int font_y = (getHeight() / 2) - (font_height / 2);
+			if(progress_string.length() != 0) {
+				percent_s = progress_string;
+			} else {
+				percent_s = "" + ((int)MathUtils.caculatePercent(progress_value, progress_maximum)) + "%";
+			}
+			
+			FontMetrics metrics = g2.getFontMetrics(g2.getFont());
+			
+			int font_width = metrics.stringWidth(percent_s);
+			int font_height = metrics.getHeight();
+			
+			int font_x = ((getWidth() / 2) - (font_width / 2));
+			int font_y = ((getHeight() / 2) - (font_height / 2)) + metrics.getAscent();
+			
+			g2.setColor(new Color(0, 0, 0, 127));
+			g2.drawString(percent_s, (getX() + font_x+2), (getY()+font_y+2));
 			
 			g2.setColor(getProgressStringColor());
-			g2.drawString(percent_string, font_x, font_y);	
+			g2.drawString(percent_s, (getX() + font_x), (getY() + font_y));	
 		}
 		
 		/*
 		 * Draw the Shadow
 		 */
 		// Top Side
-		g2.setColor(new Color(255, 255, 255, 127));
+		g2.setColor(new Color(0, 0, 0, 127));
 		g2.fillRect(getX(), getY(), getWidth(), 4);
 		// Left Side
 		g2.fillRect(getX(), getY()+4, 4, getHeight()-4);
@@ -188,5 +222,7 @@ public class ProgressBar extends AbstractPaintComponent {
 		g2.drawRect(getX(), getY(), getWidth(), getHeight());
 		
 	}
+
+
 
 }
