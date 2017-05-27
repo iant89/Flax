@@ -79,6 +79,15 @@ public class ExperienceTracker {
 		return cache_level.get(skill);
 	}
 	
+	public int getCurrentExperience(Skill skill) {
+		return Flax.getContext().getSkills().getExperience(skill);
+	}
+	
+	public int getCurrentLevel(Skill skill) {
+		return Flax.getContext().getSkills().getRealLevel(skill);
+		
+	}
+	
 	/**
 	 * Fetchs the Starting Experience/Levels for all Skills. 
 	 */
@@ -90,6 +99,10 @@ public class ExperienceTracker {
 		}
 		
 		Flax.log("[ExperienceTracker] Fetch Completed!");
+	}
+	
+	public int getExperienceTillNextLevel(Skill skill) {
+		return Flax.getContext().getSkills().getExperienceToLevel(skill);
 	}
 	
 	public int getExperiencePerHour(Skill skill, long run_time) {
@@ -119,6 +132,9 @@ public class ExperienceTracker {
 		minutes = seconds / 60;
 		seconds -= minutes * 60;
 
+		return (hours < 10 ? "0" : "") + hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+		 
+		/*
         StringBuilder b = new StringBuilder();
 		if (hours < 10) {
 			b.append('0');
@@ -136,5 +152,6 @@ public class ExperienceTracker {
 		b.append(seconds);
 
 		return b.toString();
+		*/
 	}
 }
