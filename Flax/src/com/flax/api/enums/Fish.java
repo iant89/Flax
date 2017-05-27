@@ -75,6 +75,10 @@ public enum Fish {
 		return this.fishing_exp;
 	}
 	
+	public String getRawName() {
+		return "Raw " + this.name().toLowerCase();
+	}
+	
 	public FishingTool getTool() {
 		return this.tool;
 	}
