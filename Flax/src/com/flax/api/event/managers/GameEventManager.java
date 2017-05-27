@@ -16,12 +16,13 @@ import com.flax.api.Flax;
 import com.flax.api.enums.Bars;
 import com.flax.api.enums.Fish;
 import com.flax.api.enums.Ores;
+import com.flax.api.event.FiremakingEvent;
 import com.flax.api.event.FailedSmeltingEvent;
-import com.flax.api.event.FishCaughtEvent;
+import com.flax.api.event.FishingEvent;
 import com.flax.api.event.GameEvent;
 import com.flax.api.event.LevelEvent;
-import com.flax.api.event.MinedEvent;
-import com.flax.api.event.SmeltedEvent;
+import com.flax.api.event.MiningEvent;
+import com.flax.api.event.SmeltingEvent;
 import com.flax.api.event.listeners.GameEventListener;
 
 
@@ -95,7 +96,7 @@ public class GameEventManager {
         	
         	for(Bars bar : Bars.values()) {
         		if(message.getMessage().contains(bar.getName().toLowerCase())) {
-                	fireGameEvent(new SmeltedEvent(bar));
+                	fireGameEvent(new SmeltingEvent(bar));
                 	return;
         		}
         	}
@@ -113,7 +114,7 @@ public class GameEventManager {
        	     	
         	for(Ores ore : Ores.values()) {
         		if(message.getMessage().contains(ore.getName().toLowerCase())) {
-        			fireGameEvent(new MinedEvent(ore));
+        			fireGameEvent(new MiningEvent(ore));
                 	return;		
         		}
         	}
@@ -126,12 +127,39 @@ public class GameEventManager {
    
         	for(Fish fish : Fish.values()) {
         		if(message.getMessage().contains(fish.getName().toLowerCase())) {
-        			fireGameEvent(new FishCaughtEvent(fish));
+        			fireGameEvent(new FishingEvent(fish));
         			return;
         		}
         	}
         	
         	return;
         }
+        
+        // Cook Food Event
+        if(message.getMessage().contains("You successfully cook a ")) {
+        	
+        	return;
+        }
+        
+        // Burn Food Event
+        if(message.getMessage().contains("You accidentally burn the ")) {
+        	
+        	return;
+        }
+        
+        // Get Log Event
+        // "You get some logs."
+        if(message.getMessage().contains("You get some ")) {
+        	
+        	return;
+        }
+        
+        // Start Fire Event
+        // "The fire catches and the logs begin to burn
+        if(message.getMessage().contains("The fire catches and the ")) {
+        	fireGameEvent(new FiremakingEvent());
+        	return;
+        }
+        
     }
 }
