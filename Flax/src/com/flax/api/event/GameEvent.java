@@ -15,7 +15,9 @@ public class GameEvent {
 	public static final int EVENT_DEATH = 4;
 	public static final int EVENT_FAILED_REFINING = 5;
 	public static final int EVENT_FISH_CAUGHT = 6;
-		
+	public static final int EVENT_CHOPPED_LOG = 7;
+	public static final int EVENT_CREATED_FIRE = 8;
+	
 	private int event_type = EVENT_NULL;
 	
 	public GameEvent(int type) {
