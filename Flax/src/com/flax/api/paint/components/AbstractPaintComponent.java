@@ -15,6 +15,7 @@ public abstract class AbstractPaintComponent {
 	private int 	component_width = 0;
 	private int 	component_height = 0;
 	private boolean component_visible = false;
+	private String  component_tool_tip = "";
 	
 	public int getX() {
 		return component_x;
@@ -38,6 +39,14 @@ public abstract class AbstractPaintComponent {
 	
 	public void setVisible(boolean visible) {
 		component_visible = visible;
+	}
+	
+	public void setToolTip(String tool_tip) {
+		component_tool_tip = tool_tip;
+	}
+	
+	public String getToolTip() {
+		return component_tool_tip;
 	}
 	
 	public void setBounds(int x, int y, int width, int height) {
