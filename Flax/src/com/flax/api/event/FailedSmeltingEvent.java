@@ -7,7 +7,7 @@ public class FailedSmeltingEvent extends GameEvent {
 	 * This Event is fired, everytime you fail to smelt it.
 	 */
 	public FailedSmeltingEvent() {
-		super(GameEvent.EVENT_FAILED_REFINING);
+		super(GameEvent.EVENT_SMITHING_REFINING_FAILED);
 	}
 
 }
