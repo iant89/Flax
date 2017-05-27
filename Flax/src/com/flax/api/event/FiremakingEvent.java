@@ -1,9 +1,9 @@
 package com.flax.api.event;
 
-public class CreatedFireEvent extends GameEvent {
+public class FiremakingEvent extends GameEvent {
 
-	public CreatedFireEvent() {
-		super(GameEvent.EVENT_CREATED_FIRE);
+	public FiremakingEvent() {
+		super(GameEvent.EVENT_FIREMAKING);
 	}
 
 }

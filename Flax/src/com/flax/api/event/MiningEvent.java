@@ -9,12 +9,12 @@ import com.flax.api.enums.Ores;
  * @author Ian
  *
  */
-public class MinedEvent extends GameEvent {
+public class MiningEvent extends GameEvent {
 
 	private Ores ore_mined;
 	
-	public MinedEvent(Ores ore) {
-		super(GameEvent.EVENT_MINED_ORE);
+	public MiningEvent(Ores ore) {
+		super(GameEvent.EVENT_MINING);
 		
 		ore_mined = ore;
 	}

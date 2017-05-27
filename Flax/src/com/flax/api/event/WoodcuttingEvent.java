@@ -1,9 +1,9 @@
 package com.flax.api.event;
 
-public class ChoppedLogEvent extends GameEvent {
+public class WoodcuttingEvent extends GameEvent {
 
-	public ChoppedLogEvent() {
-		super(GameEvent.EVENT_CHOPPED_LOG);
+	public WoodcuttingEvent() {
+		super(GameEvent.EVENT_WOODCUTTING);
 	}
 
 }

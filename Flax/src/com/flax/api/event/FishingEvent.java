@@ -9,7 +9,7 @@ import com.flax.api.enums.Fish;
  * @author Ian
  *
  */
-public class FishCaughtEvent extends GameEvent {
+public class FishingEvent extends GameEvent {
 
 	private Fish fish_caught = null;
 	
@@ -17,7 +17,7 @@ public class FishCaughtEvent extends GameEvent {
 	/**
 	 * @param type
 	 */
-	public FishCaughtEvent(Fish fish_type) {
+	public FishingEvent(Fish fish_type) {
 		super(GameEvent.EVENT_FISH_CAUGHT);
 		
 		fish_caught = fish_type;

@@ -9,15 +9,15 @@ import com.flax.api.enums.Bars;
  * @author Ian
  *
  */
-public class SmeltedEvent extends GameEvent {
+public class SmeltingEvent extends GameEvent {
 
 	private Bars event_bar;
 	
 	/**
 	 * @param bar
 	 */
-	public SmeltedEvent(Bars bar) {
-		super(GameEvent.EVENT_SMELTED_BAR);
+	public SmeltingEvent(Bars bar) {
+		super(GameEvent.EVENT_SMITHING_SMELT);
 		
 		event_bar = bar;
 	}
