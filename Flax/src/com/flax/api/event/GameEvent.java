@@ -13,7 +13,7 @@ public class GameEvent {
 	public static final int EVENT_SMITHING_SMELT 	= 2;
 	public static final int EVENT_MINING 			= 3;
 	public static final int EVENT_DEATH	 			= 4;
-	public static final int EVENT_FAILED_REFINING 	= 5;
+	public static final int EVENT_SMITHING_REFINING_FAILED 	= 5;
 	public static final int EVENT_FISH_CAUGHT 		= 6;
 	public static final int EVENT_WOODCUTTING 		= 7;
 	public static final int EVENT_FIREMAKING 		= 8;

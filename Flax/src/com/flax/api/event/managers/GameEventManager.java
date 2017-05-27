@@ -22,7 +22,8 @@ import com.flax.api.event.FishingEvent;
 import com.flax.api.event.GameEvent;
 import com.flax.api.event.LevelEvent;
 import com.flax.api.event.MiningEvent;
-import com.flax.api.event.SmeltingEvent;
+import com.flax.api.event.SmithingEvent;
+import com.flax.api.event.WoodcuttingEvent;
 import com.flax.api.event.listeners.GameEventListener;
 
 
@@ -91,12 +92,12 @@ public class GameEventManager {
             return;
         }
         
-     // Smelted Bar
+        // Smelted Bar
         if(message.getMessage().startsWith("You retrieve a bar of")) {
         	
         	for(Bars bar : Bars.values()) {
         		if(message.getMessage().contains(bar.getName().toLowerCase())) {
-                	fireGameEvent(new SmeltingEvent(bar));
+                	fireGameEvent(new SmithingEvent(bar));
                 	return;
         		}
         	}
@@ -106,7 +107,7 @@ public class GameEventManager {
 
         // When Smelting Iron, you have 50% Chance of it being to impure...
         if(message.getMessage().contains("too impure and you fail to refine it.")) {
-        	fireGameEvent(new FailedSmeltingEvent());
+        	fireGameEvent(new SmithingEvent(true));
         }
         
         // Mined Ore
@@ -143,14 +144,14 @@ public class GameEventManager {
         
         // Burn Food Event
         if(message.getMessage().contains("You accidentally burn the ")) {
-        	
+        	fireGameEvent(new CookingEvent());
         	return;
         }
         
         // Get Log Event
         // "You get some logs."
         if(message.getMessage().contains("You get some ")) {
-        	
+        	fireGameEvent(new WoodcuttingEvent());
         	return;
         }
         
