@@ -193,6 +193,8 @@ public class ProgressBar extends AbstractPaintComponent {
 				percent_s = "" + ((int)MathUtils.caculatePercent(progress_value, progress_maximum)) + "%";
 			}
 			
+			g2.setFont(g2.getFont().deriveFont(g2.getFont().BOLD));
+			
 			FontMetrics metrics = g2.getFontMetrics(g2.getFont());
 			
 			int font_width = metrics.stringWidth(percent_s);
