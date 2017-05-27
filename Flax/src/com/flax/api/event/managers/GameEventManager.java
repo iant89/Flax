@@ -17,6 +17,7 @@ import com.flax.api.enums.Bars;
 import com.flax.api.enums.Fish;
 import com.flax.api.enums.Ores;
 import com.flax.api.event.FiremakingEvent;
+import com.flax.api.event.CookingEvent;
 import com.flax.api.event.FailedSmeltingEvent;
 import com.flax.api.event.FishingEvent;
 import com.flax.api.event.GameEvent;
@@ -138,15 +139,18 @@ public class GameEventManager {
         
         // Cook Food Event
         if(message.getMessage().contains("You successfully cook a ")) {
-        	
+        	fireGameEvent(new CookingEvent(GameEvent.EVENT_COOKED_FOOD, 0));
         	return;
         }
         
         // Burn Food Event
         if(message.getMessage().contains("You accidentally burn the ")) {
-        	fireGameEvent(new CookingEvent());
+        	fireGameEvent(new CookingEvent(GameEvent.EVENT_BURNT_FOOD, 0));
         	return;
         }
+        
+        // Smith Item Event
+        // "You hammer the bronze and make a plate body."
         
         // Get Log Event
         // "You get some logs."
