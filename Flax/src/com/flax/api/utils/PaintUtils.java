@@ -65,7 +65,7 @@ public class PaintUtils {
 				
 				Dimension size = new Dimension(font_width+2, font_height+2);
 				int x = (int) (center_point.x - (size.getWidth() / 2));
-				int y = (int) (center_point.y - (size.getHeight() / 2));
+				int y = (int) (center_point.y - (size.getHeight() / 2))+g.getFontMetrics(g.getFont()).getAscent();
 			
 				// Draw Box
 		        g.setColor(new Color(40, 43, 47));
