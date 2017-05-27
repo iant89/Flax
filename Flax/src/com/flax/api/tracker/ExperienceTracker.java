@@ -92,5 +92,49 @@ public class ExperienceTracker {
 		Flax.log("[ExperienceTracker] Fetch Completed!");
 	}
 	
+	public int getExperiencePerHour(Skill skill, long run_time) {
+		int gained_experience = this.getGainedExperience(skill);
+		
+		if(gained_experience == 0) {
+			return 0;
+		}
+		
+		return (int) ((this.getGainedExperience(skill)) * 3600000D / run_time);
+	}
 	
+	public String getTimeTillLevel(Skill skill, long run_time) {
+		long hours;
+		long minutes;
+		long seconds;
+
+		long experience_gained = this.getGainedExperience(skill);
+		
+		if (experience_gained == 0) {
+			return "N/A";
+		}
+
+		seconds = (Flax.getContext().getSkills().getExperienceToLevel(skill)) / (getExperiencePerHour(skill, run_time)/3600);
+		hours = seconds / (60 * 60);
+		seconds -= hours * (60 * 60);
+		minutes = seconds / 60;
+		seconds -= minutes * 60;
+
+        StringBuilder b = new StringBuilder();
+		if (hours < 10) {
+			b.append('0');
+		}
+		b.append(hours);
+		b.append(':');
+		if (minutes < 10) {
+			b.append('0');
+		}
+		b.append(minutes);
+		b.append(':');
+		if (seconds < 10) {
+			b.append('0');
+		}
+		b.append(seconds);
+
+		return b.toString();
+	}
 }
