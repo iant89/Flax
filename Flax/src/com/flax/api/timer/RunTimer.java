@@ -18,7 +18,7 @@ public class RunTimer {
 	 * 
 	 * @return String		 
 	 */
-	public String getTime() {
+	public String getElapsed() {
 		long run_time = System.currentTimeMillis() - start_time;
 		
 		seconds = (int)(run_time / 1000 % 60);
@@ -62,6 +62,10 @@ public class RunTimer {
 	 */
 	public long getRunTime() {
 		return System.currentTimeMillis() - start_time;
+	}
+	
+	public boolean isRunning() {
+		return (getRunTime() > 0);
 	}
 	
 	public void start() {
