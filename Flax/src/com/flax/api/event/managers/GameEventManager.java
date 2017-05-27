@@ -15,7 +15,7 @@ import org.dreambot.api.wrappers.widgets.message.Message;
 import com.flax.api.Flax;
 import com.flax.api.enums.Bars;
 import com.flax.api.enums.Fish;
-import com.flax.api.enums.Ores;
+import com.flax.api.enums.Ore;
 import com.flax.api.event.FiremakingEvent;
 import com.flax.api.event.CookingEvent;
 import com.flax.api.event.FailedSmeltingEvent;
@@ -57,17 +57,7 @@ public class GameEventManager {
         }
     }
     
-    private Map<Skill, Integer> updateCache()
-    {
-        if(Flax.getContext() == null) {
-        	Flax.error("Context is NULL");
-        	return null;
-        }
-        if(Flax.getContext().getSkills() == null) {
-        	Flax.error("Context.Skills is NULL");
-        	return null;
-        }
-        
+    private Map<Skill, Integer> updateCache() {
     	final Map<Skill, Integer> cache = new HashMap<>();
         for (Skill skill : Skill.values())
         {
@@ -114,7 +104,7 @@ public class GameEventManager {
         // Mined Ore
         if(message.getMessage().contains("You manage to mine some ")) {
        	     	
-        	for(Ores ore : Ores.values()) {
+        	for(Ore ore : Ore.values()) {
         		if(message.getMessage().contains(ore.getName().toLowerCase())) {
         			fireGameEvent(new MiningEvent(ore));
                 	return;		
