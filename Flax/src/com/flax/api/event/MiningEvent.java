@@ -3,7 +3,7 @@
  */
 package com.flax.api.event;
 
-import com.flax.api.enums.Ores;
+import com.flax.api.enums.Ore;
 
 /**
  * @author Ian
@@ -11,15 +11,15 @@ import com.flax.api.enums.Ores;
  */
 public class MiningEvent extends GameEvent {
 
-	private Ores ore_mined;
+	private Ore ore_mined;
 	
-	public MiningEvent(Ores ore) {
+	public MiningEvent(Ore ore) {
 		super(GameEvent.EVENT_MINING);
 		
 		ore_mined = ore;
 	}
 	
-	public Ores getOreType() {
+	public Ore getOreType() {
 		return ore_mined;
 	}
 
