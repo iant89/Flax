@@ -72,6 +72,10 @@ public class SmithingInterface {
 		MethodProvider.sleep(Calculations.random(1000, 2400));
 	}
 	
+	public static boolean interfaceHasItem(SmithingItems item) {
+		return (findWidget(item.getName()) != null);
+	}
+	
 	/**
 	 * Finds the Child Widget
 	 * @param name
