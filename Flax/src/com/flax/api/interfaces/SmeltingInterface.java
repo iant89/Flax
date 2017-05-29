@@ -23,7 +23,13 @@ public class SmeltingInterface {
 	 * @return boolean
 	 */
 	public static boolean isVisible() {
-		return getWidget(311).isVisible();
+		Widget smelting_widget = getWidget(311);
+		
+		if(smelting_widget == null) {
+			return false;
+		}
+		
+		return smelting_widget.isVisible();
 	}
 	
 	/**

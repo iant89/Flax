@@ -22,7 +22,13 @@ public class SmithingInterface {
 	 * @return boolean
 	 */
 	public static boolean isVisible() {
-		return getWidget(312).isVisible();
+		Widget smithing_widget = getWidget(312);
+		
+		if(smithing_widget == null) {
+			return false;
+		}
+		
+		return smithing_widget.isVisible();
 	}
 	
 	
