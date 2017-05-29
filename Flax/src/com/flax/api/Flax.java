@@ -16,14 +16,17 @@ import com.flax.api.event.managers.GameEventManager;
  *
  */
 public class Flax {
-	public static boolean 					FLAX_DEBUG 				= false;
-	public static final double				FLAX_VERSION			= 0.1;
+	public static final boolean 			FLAX_DEBUG 				= true;
+	public static final double				FLAX_VERSION			= 0.2;
 	private static ClientContext 			context 				= null;
 	private static GameEventManager			game_event_manager 		= null;
 	private static CanvasMouseManager		canvas_mouse_manager	= null;
 	
-	public static void setContext(ClientContext c_context) {
+	private static String 					API_TOKEN				= "";
+	
+	public static void setContext(ClientContext c_context, String api_token) {
 		context = c_context;
+		API_TOKEN = api_token;
 	}
 	
 	public static ClientContext getContext() {
@@ -60,7 +63,7 @@ public class Flax {
 			return;
 		}
 		
-		log("[FLAX][DEBUG] " + message);
+		log("[DEBUG] " + message);
 	}
 
 
@@ -71,6 +74,6 @@ public class Flax {
 			}
 		}
 		
-		MethodProvider.log("[FLAX][ERROR]" + message);
+		MethodProvider.log("[ERROR]" + message);
 	}
 }
