@@ -3,27 +3,30 @@
  */
 package com.flax.api.enums;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Ian
  *
  */
 public enum Bars {
-	BRONZE(		"Bronze", 		2349,	1,	6.25,	new Ores[]{Ores.TIN, Ores.COPPER}),
-	IRON(		"Iron", 		2351,	15,	12.5,	new Ores[]{Ores.IRON}),
-	SILVER(		"Silver", 		2355,	20,	13.67,	new Ores[]{Ores.SILVER}),
-	STEEL(		"Steel", 		2353,	30,	17.5,	new Ores[]{Ores.IRON, Ores.COAL, Ores.COAL}),
-	GOLD(		"Gold", 		2357,	40,	22.5,	new Ores[]{Ores.GOLD}),
-	MITHRIL(	"Mithril", 		2359,	50,	30.0,	new Ores[]{Ores.MITHRIL, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL}),
-	ADAMANTITE(	"Adamantite", 	2361,	70,	37.5,	new Ores[]{Ores.ADAMANTITE, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL}),
-	RUNE(		"Rune", 		2363,	85,	50.0, 	new Ores[]{Ores.RUNITE, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL, Ores.COAL});
+	BRONZE(		"Bronze", 		2349,	1,	6.25,	new Ore[]{Ore.TIN, Ore.COPPER}),
+	IRON(		"Iron", 		2351,	15,	12.5,	new Ore[]{Ore.IRON}),
+	SILVER(		"Silver", 		2355,	20,	13.67,	new Ore[]{Ore.SILVER}),
+	STEEL(		"Steel", 		2353,	30,	17.5,	new Ore[]{Ore.IRON, Ore.COAL, Ore.COAL}),
+	GOLD(		"Gold", 		2357,	40,	22.5,	new Ore[]{Ore.GOLD}),
+	MITHRIL(	"Mithril", 		2359,	50,	30.0,	new Ore[]{Ore.MITHRIL, Ore.COAL, Ore.COAL, Ore.COAL, Ore.COAL}),
+	ADAMANTITE(	"Adamantite", 	2361,	70,	37.5,	new Ore[]{Ore.ADAMANTITE, Ore.COAL, Ore.COAL, Ore.COAL, Ore.COAL, Ore.COAL, Ore.COAL}),
+	RUNE(		"Rune", 		2363,	85,	50.0, 	null);
 	
 	private String bar_name;
 	private int bar_id;
 	private int level;
 	private double experience;
-	private Ores[] required_ores;
+	private Ore[] required_ores;
 	
-	Bars(String name, int id, int level, double experience, Ores[] required_ores) {
+	<MapEntry> Bars(String name, int id, int level, double experience, Ore[] required_ores) {
 		bar_name = name;
 		bar_id = id;
 		this.level = level;
@@ -47,7 +50,7 @@ public enum Bars {
 		return this.experience;
 	}
 	
-	public Ores[] getRequiredOres() {
+	public Ore[] getRequiredOres() {
 		return this.required_ores;
 	}
 }

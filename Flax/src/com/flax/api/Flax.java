@@ -18,6 +18,8 @@ import com.flax.api.event.managers.GameEventManager;
 public class Flax {
 	public static final boolean 			FLAX_DEBUG 				= true;
 	public static final double				FLAX_VERSION			= 0.2;
+	public static final boolean				STATISTICS_ENABLED		= true;
+	
 	private static ClientContext 			context 				= null;
 	private static GameEventManager			game_event_manager 		= null;
 	private static CanvasMouseManager		canvas_mouse_manager	= null;

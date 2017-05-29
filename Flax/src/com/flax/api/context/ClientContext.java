@@ -13,12 +13,14 @@ import org.dreambot.api.methods.input.Camera;
 import org.dreambot.api.methods.input.Keyboard;
 import org.dreambot.api.methods.interactive.GameObjects;
 import org.dreambot.api.methods.interactive.Players;
+import org.dreambot.api.methods.item.GroundItems;
 import org.dreambot.api.methods.skills.Skills;
 import org.dreambot.api.methods.tabs.Tabs;
 import org.dreambot.api.methods.walking.impl.Walking;
 import org.dreambot.api.methods.widget.Widgets;
 import org.dreambot.api.script.AbstractScript;
 import org.dreambot.api.wrappers.interactive.Player;
+import org.dreambot.api.wrappers.items.GroundItem;
 
 
 /**
@@ -39,6 +41,10 @@ private static AbstractScript script_context = null;
 	
 	public boolean isCreated() {
 		return (script_context != null);
+	}
+	
+	public GroundItems getGroundItems() {
+		return script_context.getGroundItems();
 	}
 	
 	public Inventory getInventory() {

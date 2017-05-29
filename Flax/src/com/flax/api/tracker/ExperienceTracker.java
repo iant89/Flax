@@ -101,8 +101,19 @@ public class ExperienceTracker {
 		Flax.log("[ExperienceTracker] Fetch Completed!");
 	}
 	
-	public int getExperienceTillNextLevel(Skill skill) {
-		return Flax.getContext().getSkills().getExperienceToLevel(skill);
+	public int getExperienceRemaining(Skill skill) {
+		int current_exp = this.getCurrentExperience(skill);
+		int next_exp = this.getExperienceAtNextLevel(skill);
+		
+		return next_exp - current_exp;
+	}
+	
+	public int getExperienceAtNextLevel(Skill skill) {
+		return Flax.getContext().getSkills().getExperienceForLevel(this.getCurrentLevel(skill)+1);
+	}
+	
+	public int getExperienceGainedOverLevel(Skill skill) {
+		return Flax.getContext().getSkills().getExperienceForLevel(this.getCurrentLevel(skill)) - Flax.getContext().getSkills().getExperienceForLevel(this.getCurrentLevel(skill)+1);
 	}
 	
 	public int getExperiencePerHour(Skill skill, long run_time) {

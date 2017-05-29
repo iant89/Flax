@@ -3,7 +3,10 @@
  */
 package com.flax.api.script;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 import org.dreambot.api.script.AbstractScript;
@@ -28,15 +31,15 @@ public abstract class AbstractFlaxScript extends AbstractScript implements Messa
 	public abstract void message(Message message);
 	
 	public AbstractFlaxScript() {
-		Flax.setContext(ClientContext.createContext(this));
+		Flax.setContext(ClientContext.createContext(this), "");
 	}
 	
 	public AbstractFlaxScript(AbstractScript script) {
-		Flax.setContext(ClientContext.createContext(script));
+		Flax.setContext(ClientContext.createContext(script), "");
 	}
 	
 	public void setScript(AbstractScript script) {
-		Flax.setContext(ClientContext.createContext(script));
+		Flax.setContext(ClientContext.createContext(script), "");
 	}
 	
 	@Override
@@ -50,8 +53,17 @@ public abstract class AbstractFlaxScript extends AbstractScript implements Messa
 	}
 	
 	@Override
-	public void onPaint(Graphics g) {
-		paint(g);
+	public void onPaint(Graphics g1) {
+		Graphics2D g2 = (Graphics2D)g1;
+        g2.setFont(new Font("Arial", 1, 13));
+        g2.setColor(new Color(102, 255, 51));
+        if(Flax.FLAX_DEBUG) {
+        	g2.drawString("Flax Framework v" + Flax.FLAX_VERSION + " (DEVELOPMENT BUILD)", 7, 333);
+        } else {
+        	g2.drawString("Flax Framework v" + Flax.FLAX_VERSION, 7, 333);
+        }
+		
+		paint(g1);
 	}
 	
 	@Override
