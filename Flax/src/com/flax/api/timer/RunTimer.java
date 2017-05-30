@@ -12,6 +12,19 @@ public class RunTimer {
 	private long	hours;
 	private long	minutes;
 	private long	seconds;
+	private TimeFormat time_format = TimeFormat.TIME_BARE;
+	
+	public static enum TimeFormat {
+		TIME_FORMAL, TIME_SHORT, TIME_ABBREV, TIME_BARE
+	}
+	
+	public void setFormat(TimeFormat format) {
+		time_format = format;
+	}
+	
+	public TimeFormat getFormat() {
+		return time_format;
+	}
 	
 	/**
 	 * Formats the Runtime of the Timer in HH:MM:SS
@@ -25,26 +38,22 @@ public class RunTimer {
 		minutes = (int)(run_time / 1000 / 60) % 60;
 		hours = (int)(run_time / 1000 / 60 / 60) % 60;
 		
-		StringBuilder time_sb = new StringBuilder();
-		
-		if(hours < 10) {
-			time_sb.append("0");
+		return formatTime((int)hours, (int)minutes, (int)seconds);
+	}
+	
+	private String formatTime(int hrs, int mins, int secs) {
+		switch(time_format) {
+			case TIME_FORMAL:
+				return "" + hrs + " Hours, " + mins + " Minutes, " + secs + " Seconds";
+			case TIME_SHORT:
+				return "" + hrs + "h, " + mins + "m, " + secs + "s";
+			case TIME_ABBREV:
+				return "" + hrs + " hr, " + mins + " min, " + secs + " sec";
+			case TIME_BARE:
+				return (hrs < 10 ? "0" : "") + hrs + ":" + (mins < 10 ? "0" : "") + mins + ":" + (secs < 10 ? "0" : "") + secs;
 		}
-		time_sb.append(hours);
-		time_sb.append(":");
 		
-		if(minutes < 10) {
-			time_sb.append("0");
-		}
-		time_sb.append(minutes);
-		time_sb.append(":");
-		
-		if(seconds < 10) {
-			time_sb.append("0");
-		}
-		time_sb.append(seconds);
-		
-		return time_sb.toString();
+		return "";
 	}
 	
 	/**
