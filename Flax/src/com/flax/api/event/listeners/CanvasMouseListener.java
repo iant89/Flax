@@ -12,5 +12,5 @@ import com.flax.api.event.LevelEvent;
  *
  */
 public interface CanvasMouseListener {
-	public abstract void onMouse(MouseEvent event);
+	public abstract void onCanvasMouse(MouseEvent event);
 }

@@ -108,6 +108,13 @@ public class ExperienceTracker {
 		return next_exp - current_exp;
 	}
 	
+	public int getExperienceRequiredForLevel(Skill skill) {
+		int top = Flax.getContext().getSkills().getExperienceForLevel(this.getCurrentLevel(skill)+1);
+		int bottom = Flax.getContext().getSkills().getExperienceForLevel(this.getCurrentLevel(skill));
+		
+		return top - bottom;
+	}
+	
 	public int getExperienceAtNextLevel(Skill skill) {
 		return Flax.getContext().getSkills().getExperienceForLevel(this.getCurrentLevel(skill)+1);
 	}

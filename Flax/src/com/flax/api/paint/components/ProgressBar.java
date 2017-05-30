@@ -226,8 +226,11 @@ public class ProgressBar extends AbstractPaintComponent {
 		g2.setStroke(new BasicStroke(1));
 		g2.drawRect(getX(), getY(), getWidth(), getHeight());
 		
+		
 	}
 
-
+	public double getPercent() {
+		return MathUtils.caculatePercent(progress_value, progress_maximum);
+	}
 
 }

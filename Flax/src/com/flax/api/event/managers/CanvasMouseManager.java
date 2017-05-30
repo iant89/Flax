@@ -31,7 +31,7 @@ public class CanvasMouseManager {
     private void fireChangeEvent(MouseEvent event) {
         for (CanvasMouseListener listener : listeners) {
             final CanvasMouseListener l = (CanvasMouseListener) listener;
-            l.onMouse(event);
+            l.onCanvasMouse(event);
         }
     }
     
