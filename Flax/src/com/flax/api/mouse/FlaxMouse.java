@@ -5,6 +5,8 @@ package com.flax.api.mouse;
 
 import java.awt.Point;
 
+import org.dreambot.api.methods.MethodProvider;
+
 import com.flax.api.Flax;
 
 /**
@@ -41,7 +43,9 @@ public class FlaxMouse {
         final double sqrt3 = Math.sqrt(3);
         final double sqrt5 = Math.sqrt(5);
 
-
+        updateMousePosition();
+        
+        
         double dist, veloX = 0, veloY = 0, windX = 0, windY = 0;
         while ((dist = Math.hypot(xs - xe,ys - ye)) >= 1) {
             wind = Math.min(wind, dist);
@@ -116,5 +120,9 @@ public class FlaxMouse {
         cx = x;
         cy = y;
         return new Point(cx, cy);
+    }
+    
+    public static void clickMouse() {
+    	Flax.getContext().getMouse().click(false);
     }
 }
