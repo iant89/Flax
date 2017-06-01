@@ -13,7 +13,7 @@ import org.dreambot.api.methods.skills.Skill;
 import org.dreambot.api.wrappers.widgets.message.Message;
 
 import com.flax.api.Flax;
-import com.flax.api.enums.Bars;
+import com.flax.api.enums.Bar;
 import com.flax.api.enums.Fish;
 import com.flax.api.enums.Ore;
 import com.flax.api.event.FiremakingEvent;
@@ -86,8 +86,9 @@ public class GameEventManager {
         // Smelted Bar
         if(message.getMessage().startsWith("You retrieve a bar of")) {
         	
-        	for(Bars bar : Bars.values()) {
-        		if(message.getMessage().contains(bar.getName().toLowerCase())) {
+        	for(Bar bar : Bar.values()) {
+        		String bar_name = bar.getName().replaceAll(" bar", "").toLowerCase();
+        		if(message.getMessage().contains(bar_name)) {
                 	fireGameEvent(new SmithingEvent(bar));
                 	return;
         		}

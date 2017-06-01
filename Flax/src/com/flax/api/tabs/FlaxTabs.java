@@ -11,20 +11,21 @@ import com.flax.api.Flax;
 import com.flax.api.mouse.FlaxMouse;
 
 public class FlaxTabs {
+	private static final FlaxTabs _instance = new FlaxTabs();
 	
-	public static boolean isDisabled(Tab tab) {
+	public boolean isDisabled(Tab tab) {
 		return Flax.getContext().getTabs().isDisabled(tab);
 	}
 	
-	public static boolean isOpen(Tab tab) {
+	public boolean isOpen(Tab tab) {
 		return Flax.getContext().getTabs().isOpen(tab);
 	}
 	
-	public static Tab getOpen() {
+	public Tab getOpen() {
 		return Flax.getContext().getTabs().getOpen();
 	}
 	
-	public static void openTab(Tab tab) {
+	public void openTab(Tab tab) {
 		if(isOpen(tab)) {
 			return;
 		}
@@ -99,5 +100,9 @@ public class FlaxTabs {
 		FlaxMouse.windMouse(mouse_point.x, mouse_point.y);
 		MethodProvider.sleep(10, 50);
 		FlaxMouse.clickMouse();
+	}
+
+	public static FlaxTabs getInstance() {
+		return _instance;
 	}
 }

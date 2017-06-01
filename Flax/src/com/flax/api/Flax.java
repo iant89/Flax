@@ -20,19 +20,11 @@ public class Flax {
 	public static final double				FLAX_VERSION			= 0.2;
 	public static final boolean				STATISTICS_ENABLED		= true;
 	
-	private static ClientContext 			context 				= null;
 	private static GameEventManager			game_event_manager 		= null;
 	private static CanvasMouseManager		canvas_mouse_manager	= null;
 	
-	private static String 					API_TOKEN				= "";
-	
-	public static void setContext(ClientContext c_context, String api_token) {
-		context = c_context;
-		API_TOKEN = api_token;
-	}
-	
 	public static ClientContext getContext() {
-		return context;
+		return ClientContext.getInstance();
 	}
 	
 	public static GameEventManager getGameEventManager() {

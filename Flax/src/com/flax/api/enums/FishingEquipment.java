@@ -7,7 +7,7 @@ package com.flax.api.enums;
  * @author Ian
  *
  */
-public enum FishingTool {
+public enum FishingEquipment {
 	FISHING_ROD(		"Fishing rod", 			1, 		0, 		-1, 	false),
 	SMALL_FISHING_NET(	"Small fishing net", 	1, 		0, 		-1, 	false),
 	BIG_FISHING_NET(	"Big fishing net", 		6, 		0, 		-1, 	true),
@@ -22,7 +22,7 @@ public enum FishingTool {
 	private int animation;
 	private boolean members;
 	
-	FishingTool(String name, int level, int id, int animation_id, boolean members) {
+	FishingEquipment(String name, int level, int id, int animation_id, boolean members) {
 		tool_name = name;
 		level_required = level;
 		item_id = id;

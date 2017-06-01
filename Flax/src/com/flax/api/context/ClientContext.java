@@ -22,23 +22,30 @@ import org.dreambot.api.script.AbstractScript;
 import org.dreambot.api.wrappers.interactive.Player;
 import org.dreambot.api.wrappers.items.GroundItem;
 
+import com.flax.api.tabs.FlaxTabs;
+
 
 /**
  * @author Ian
  *
  */
 public class ClientContext {
-
-private static AbstractScript script_context = null;
-	
-	public static ClientContext createContext(AbstractScript script) {
-		return new ClientContext(script);
-	}
+	private static ClientContext _instance = null;
+	private static AbstractScript script_context = null;
 	
 	public ClientContext(AbstractScript script) {
+		if(_instance != null) {
+			return;
+		}
+		
+		_instance = this;
 		script_context = script;
 	}
 	
+	public static ClientContext getInstance() {
+		return _instance;
+	}
+ 	
 	public boolean isCreated() {
 		return (script_context != null);
 	}
@@ -79,10 +86,6 @@ private static AbstractScript script_context = null;
 		return script_context.getClient();
 	}
 	
-	public Tabs getTabs() {
-		return script_context.getTabs();
-	}
-	
 	public Mouse getMouse() {
 		return script_context.getMouse();
 	}
@@ -106,4 +109,12 @@ private static AbstractScript script_context = null;
 	public Keyboard getKeyboard() {
 		return script_context.getKeyboard();
 	}
+	
+	/*
+	 * OVERRIDDEN CONTEXT METHODS
+	 */
+	public FlaxTabs getTabs() {
+		return FlaxTabs.getInstance();
+	}
+	
 }

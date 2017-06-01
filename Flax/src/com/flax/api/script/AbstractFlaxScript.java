@@ -31,15 +31,15 @@ public abstract class AbstractFlaxScript extends AbstractScript implements Messa
 	public abstract void message(Message message);
 	
 	public AbstractFlaxScript() {
-		Flax.setContext(ClientContext.createContext(this), "");
+		new ClientContext(this);
 	}
 	
 	public AbstractFlaxScript(AbstractScript script) {
-		Flax.setContext(ClientContext.createContext(script), "");
+		new ClientContext(script);
 	}
 	
 	public void setScript(AbstractScript script) {
-		Flax.setContext(ClientContext.createContext(script), "");
+		new ClientContext(script);
 	}
 	
 	@Override

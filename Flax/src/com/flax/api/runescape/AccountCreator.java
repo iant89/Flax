@@ -70,9 +70,12 @@ public class AccountCreator {
 		}
 		in.close();
 		System.out.println(response.toString());
-		if(response.toString().contains("Account Created"))
+		if(response.toString().contains("Account Created")) {
+			System.out.println("SUCCESS: " + email_ + ":" + password);
 			return 0;
-		else
+		} else {
+			System.out.println("FAILED: " + email_);
 			return 1;
+		}
 	}
 }

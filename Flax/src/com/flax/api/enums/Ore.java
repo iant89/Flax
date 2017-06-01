@@ -10,18 +10,18 @@ import org.dreambot.api.methods.map.Tile;
  *
  */
 public enum Ore {
-	CLAY(			"Clay", 		434, 	1, 		5.0,	false, 		new int[] { }),
-	RUNE_ESSENCE(	"Rune essence",	0,		1,		5.0,	false, 		new int[] { }),
-	COPPER(			"Copper", 		436, 	1, 		17.5,	false, 		new int[] { }),
-	TIN(			"Tin", 			438, 	1, 		17.5,	false, 		new int[] { }),
-	IRON(			"Iron", 		440, 	15,		35.0,	false, 		new int[] { }),
-	GOLD(			"Gold", 		444, 	40,		65.0,	false, 		new int[] { }),
-	SILVER(			"Silver", 		442, 	40,		40.0,	false, 		new int[] { }),
-	PURE_ESSENCE(	"Pure essence",	0,		30,		5.0,	true, 		new int[] { }),
-	MITHRIL(		"Mithril", 		447, 	55,		80.0,	false, 		new int[] { }),
-	ADAMANTITE(		"Adamantite", 	449, 	70,		95.0,	false, 		new int[] { }),
-	COAL(			"Coal", 		453, 	30,		50.0,	false, 		new int[] { }),
-	RUNITE(			"Runite", 		451, 	85,		125.0,	false, 		new int[] { });
+	CLAY(			"Clay", 			434, 	1, 		5.0,	false, 		new int[] { }),
+	RUNE_ESSENCE(	"Rune essence",		0,		1,		5.0,	false, 		new int[] { }),
+	COPPER(			"Copper ore", 		436, 	1, 		17.5,	false, 		new int[] { }),
+	TIN(			"Tin ore", 			438, 	1, 		17.5,	false, 		new int[] { }),
+	IRON(			"Iron ore", 		440, 	15,		35.0,	false, 		new int[] { }),
+	GOLD(			"Gold ore", 		444, 	40,		65.0,	false, 		new int[] { }),
+	SILVER(			"Silver ore", 		442, 	40,		40.0,	false, 		new int[] { }),
+	PURE_ESSENCE(	"Pure essence",		0,		30,		5.0,	true, 		new int[] { }),
+	MITHRIL(		"Mithril ore", 		447, 	55,		80.0,	false, 		new int[] { }),
+	ADAMANTITE(		"Adamantite ore", 	449, 	70,		95.0,	false, 		new int[] { }),
+	COAL(			"Coal", 			453, 	30,		50.0,	false, 		new int[] { }),
+	RUNITE(			"Runite ore", 		451, 	85,		125.0,	false, 		new int[] { });
 	
 	private String 	ore_name;
 	private int 	ore_id;
