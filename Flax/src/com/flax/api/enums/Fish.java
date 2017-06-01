@@ -32,7 +32,7 @@ public enum Fish {
 	private double		cooking_exp;
 	private int			fishing_level;
 	private int			cooking_level;
-	private FishingEquipment	tool;
+	private FishingEquipment	equipment;
 	private boolean		members;
 	private String		action_text;
 	
@@ -44,7 +44,7 @@ public enum Fish {
 		this.cooking_exp = cooking_exp;
 		this.fishing_level = fishing_level;
 		this.cooking_level = cooking_level;
-		this.tool = tool;
+		this.equipment = tool;
 		this.members = members;
 		this.action_text = action;
 	}
@@ -81,8 +81,8 @@ public enum Fish {
 		return "Raw " + this.name().toLowerCase();
 	}
 	
-	public FishingEquipment getTool() {
-		return this.tool;
+	public FishingEquipment getEquipment() {
+		return this.equipment;
 	}
 	
 	public boolean isMembers() {

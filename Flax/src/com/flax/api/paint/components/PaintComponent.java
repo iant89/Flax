@@ -9,7 +9,7 @@ import java.awt.Graphics;
  * @author Ian
  *
  */
-public abstract class AbstractPaintComponent {
+public abstract class PaintComponent {
 	private int 	component_x = 0;
 	private int 	component_y = 0;
 	private int 	component_width = 0;

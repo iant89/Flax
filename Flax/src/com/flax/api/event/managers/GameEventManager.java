@@ -16,8 +16,10 @@ import com.flax.api.Flax;
 import com.flax.api.enums.Bar;
 import com.flax.api.enums.Fish;
 import com.flax.api.enums.Ore;
+import com.flax.api.enums.SmithingItems;
 import com.flax.api.event.FiremakingEvent;
 import com.flax.api.event.CookingEvent;
+import com.flax.api.event.DeathEvent;
 import com.flax.api.event.FailedSmeltingEvent;
 import com.flax.api.event.FishingEvent;
 import com.flax.api.event.GameEvent;
@@ -142,20 +144,30 @@ public class GameEventManager {
         
         // Smith Item Event
         // "You hammer the bronze and make a plate body."
+        if(message.getMessage().contains("You hammer the") && message.getMessage().contains(" and make a ")) {
+        	// TODO: Parse Item being Made
+        	fireGameEvent(new SmithingEvent(SmithingItems.AXE));
+        	return;
+        }
         
         // Get Log Event
-        // "You get some logs."
         if(message.getMessage().contains("You get some ")) {
         	fireGameEvent(new WoodcuttingEvent());
         	return;
         }
         
         // Start Fire Event
-        // "The fire catches and the logs begin to burn
         if(message.getMessage().contains("The fire catches and the ")) {
         	fireGameEvent(new FiremakingEvent());
         	return;
         }
+
+        // Death Event
+        if(message.getMessage().contains("Oh dear, you are dead")) {
+        	fireGameEvent(new DeathEvent(Flax.getContext().getLocalPlayer().getTile()));
+        	return;
+        }
+        
         
     }
 }

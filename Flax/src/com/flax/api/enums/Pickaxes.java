@@ -8,14 +8,14 @@ package com.flax.api.enums;
  *
  */
 public enum Pickaxes {
-	BRONZE(		"Bronze", 	1, 		434, 	false),
-	IRON(		"Iron", 	1, 		436, 	false),
-	STEEL(		"Steel", 	6, 		438, 	false),
-	BLACK(		"Black", 	11, 	440, 	false),
-	MITHRIL(	"Mithril", 	21, 	444, 	false),
-	ADAMANT(	"Adamant", 	31, 	442, 	false),
-	RUNE(		"Rune",	 	41, 	453, 	false),
-	DRAGON(		"Dragon", 	61, 	451, 	true);
+	BRONZE(		"Bronze pickaxe", 	1, 		434, 	false),
+	IRON(		"Iron pickaxe",		1, 		436, 	false),
+	STEEL(		"Steel pickaxe", 	6, 		438, 	false),
+	BLACK(		"Black pickaxe", 	11, 	440, 	false),
+	MITHRIL(	"Mithril pickaxe",	21, 	444, 	false),
+	ADAMANT(	"Adamant pickaxe",	31, 	442, 	false),
+	RUNE(		"Rune pickaxe",	 	41, 	453, 	false),
+	DRAGON(		"Dragon pickaxe", 	61, 	451, 	true);
 	
 	private String pick_name;
 	private int level_required;

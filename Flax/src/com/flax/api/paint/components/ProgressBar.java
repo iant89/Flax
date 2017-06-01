@@ -21,7 +21,7 @@ import com.flax.api.utils.MathUtils;
  * @author Ian
  *
  */
-public class ProgressBar extends AbstractPaintComponent {
+public class ProgressBar extends PaintComponent {
 
 	// Default Colors
 	public final Color 		COLOR_GREEN 					= new Color(0, 95, 0);

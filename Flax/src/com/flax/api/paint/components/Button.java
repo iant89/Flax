@@ -21,7 +21,7 @@ import com.flax.api.Flax;
  * @author Ian
  *
  */
-public class Button extends AbstractPaintComponent {
+public class Button extends PaintComponent {
 
 	private boolean		button_selected				= false;
 	private String		button_text 				= "";
